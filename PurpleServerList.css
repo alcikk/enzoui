@@ -9,7 +9,7 @@
 
 /* 1. Zmiana paddingu treści, aby nie zasłaniała listy po prawej */
 #app-mount .app_a3002d .base__5e434 .content__5e434 {
-    padding-right: calc(var(--ServerSize) + 20px) !important; /* Zmieniono padding-right */
+    padding-right: calc(var(--ServerSize) + 10px) !important; /* Zmieniono padding-right */
     padding-top: 0 !important;
     position: relative;
 }
@@ -26,7 +26,7 @@
     left: auto !important;
     
     /* Wymiary pionowego paska po prawej */
-    height: calc(var(--ServerSize) + 20px) !important; /* Szerokość paska (wysokość w CSS) */
+    height: calc(var(--ServerSize) + 10px) !important; /* Szerokość paska (wysokość w CSS) */
     width: 100vh !important; /* Wysokość paska (szerokość w CSS) - pełna wysokość ekranu */
     
     position: fixed !important;
@@ -36,7 +36,7 @@
 }
 
 .scrollerWrap-1IAIlv {
-    width: calc(100% - 30px); /* Zmieniono szerokość, aby nie wychodziło poza ekran */
+    width: calc(100% + 30px); /* Zmieniono szerokość, aby nie wychodziło poza ekran */
 }
 
 /* 3. Elementy listy (ikony serwerów) */

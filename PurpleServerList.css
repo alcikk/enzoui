@@ -1,23 +1,31 @@
+/* 
+   PurpleServerList.css - Modyfikacja
+   ZMIANA: Lista serwerów przeniesiona na DÓŁ ekranu.
+*/
+
 .platform-osx .wrapper_ef3116 {
     margin-top: 0px;
 }
 
 #app-mount .app_a3002d .base__5e434 .content__5e434 {
-    padding-top: calc(var(--ServerSize) + 20px) !important;
+    padding-bottom: calc(var(--ServerSize) + 20px) !important; /* Zmieniono padding-top na padding-bottom */
+    padding-top: 0 !important;
     position: relative;
 }
 
 #app-mount .guilds__5e434 {
-    transform-origin: top left;
-    transform: rotate(180deg);
-    height: 100vw !important;
-    width: calc(var(--ServerSize) + 20px);
-    top: calc(var(--ServerSize) + 20px + 32px);
-    bottom: unset;
+    /* Zmiana: Obróć kontener, aby był na dole, a nie na górze */
+    transform-origin: bottom left;
+    transform: rotate(0deg); /* Usunięto 180deg, teraz jest na dole */
+    height: calc(var(--ServerSize) + 20px) !important; /* Wysokość paska na dole */
+    width: 100vw !important; /* Pełna szerokość */
+    top: auto !important;
+    bottom: 0 !important; /* Przesunięcie na dół */
     position: fixed !important;
     left: 0;
     flex-wrap: wrap;
     place-content: center;
+    /* Jeśli chcesz, aby był na górze w orientacji poziomej, zmień na: bottom: auto; top: 0; */
 }
 
 .scrollerWrap-1IAIlv {
@@ -25,7 +33,7 @@
 }
 
 #app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper]) {
-    transform: rotate(180deg);
+    transform: rotate(0deg); /* Usunięto obrót, teraz ikony są normalne */
     position: unset;
     width: var(--ServerSize);
     height: var(--ServerSize);
@@ -42,7 +50,7 @@
     width: auto;
     place-content: center;
     flex-wrap: wrap;
-    margin: 3px 0 6px 0;
+    margin: 3px 0 0 0; /* Zmieniono margin bottom na 0, bo jest na dole */
 }
 
 #app-mount .guilds__5e434 .folderGroup__48112>.listItem__650eb {
@@ -72,13 +80,13 @@
 }
 
 #app-mount [class*="guildSeparator"] {
-    transform: rotate(180deg);
+    transform: rotate(0deg); /* Usunięto obrót */
     width: var(--ServerSize);
 }
 
 #app-mount .wrapper_d144f8 {
-    transform: rotate(90deg) translateY(0%);
-    top: -10px;
+    transform: rotate(0deg) translateY(0%); /* Usunięto obrót */
+    top: 0px;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -135,20 +143,21 @@
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116 {
-    width: calc(var(--ServerSize) + 20px);
-    height: 100% !important;
+    width: 100% !important; /* Pełna szerokość na dole */
+    height: calc(var(--ServerSize) + 20px) !important; /* Wysokość paska na dole */
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Zmieniono na row (poziomo) */
     padding: 0 0 !important;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Zaczynamy od lewej */
     align-items: center;
+    position: relative;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ebc727,
 #app-mount .guilds__5e434 .listItem__650eb .wrapper__58105,
 #app-mount .pill__1f388 {
-    transform: rotate(90deg) translateY(0%);
+    transform: rotate(0deg) translateY(0%); /* Usunięto obrót */
     height: var(--ServerSize);
     width: 10px;
     top: calc(var(--ServerSize) / -1 + var(--ServerSize) / 2 - 5px) !important;
@@ -246,7 +255,7 @@
 }
 
 .unreadMentionsBar_ef3116 {
-    transform: rotate(180deg) translateY(0%) !important;
+    transform: rotate(0deg) translateY(0%) !important; /* Usunięto obrót */
     left: calc(-50% + 0px);
     bottom: unset;
     width: var(--ServerSize);

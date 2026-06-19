@@ -1,45 +1,31 @@
-/* 
-   PurpleServerList.css - WERSJA NA PRAWĄ STRONĘ
-   Lista serwerów jest teraz pionowo po prawej stronie ekranu.
-*/
-
 .platform-osx .wrapper_ef3116 {
     margin-top: 0px;
 }
 
-/* 1. Zmiana paddingu treści, aby nie zasłaniała listy po prawej */
 #app-mount .app_a3002d .base__5e434 .content__5e434 {
-    padding-right: calc(var(--ServerSize) + 10px) !important; /* Zmieniono padding-right */
-    padding-top: 0 !important;
+    padding-top: calc(var(--ServerSize) + 20px) !important;
     position: relative;
 }
 
-/* 2. Główny kontener - PRZENIESIENIE NA PRAWĄ STRONĘ */
 #app-mount .guilds__5e434 {
-    transform-origin: top right; /* Zmieniono punkt obrotu na prawą górną krawędź */
-    
-    /* Pozycja po prawej */
-    top: auto !important;
-    bottom: auto !important;
-    right: 0 !important; /* Kluczowe: przyklej do prawej */
-    left: auto !important;
-    
-    /* Wymiary pionowego paska po prawej */
-    height: calc(var(--ServerSize) + 10px) !important; /* Szerokość paska (wysokość w CSS) */
-    width: 100vh !important; /* Wysokość paska (szerokość w CSS) - pełna wysokość ekranu */
-    
+    transform-origin: top left;
+    transform: rotate(-90deg);
+    height: 100vw !important;
+    width: calc(var(--ServerSize) + 20px);
+    top: calc(var(--ServerSize) + 20px + 32px);
+    bottom: unset;
     position: fixed !important;
+    left: 0;
     flex-wrap: wrap;
     place-content: center;
-    z-index: 9999 !important;
 }
 
 .scrollerWrap-1IAIlv {
-    width: calc(100% + 30px); /* Zmieniono szerokość, aby nie wychodziło poza ekran */
+    width: calc(100% + 30px);
 }
 
-/* 3. Elementy listy (ikony serwerów) */
 #app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper]) {
+    transform: rotate(90deg);
     position: unset;
     width: var(--ServerSize);
     height: var(--ServerSize);
@@ -86,9 +72,17 @@
 }
 
 #app-mount [class*="guildSeparator"] {
+    transform: rotate(90deg);
     width: var(--ServerSize);
 }
 
+#app-mount .wrapper_d144f8 {
+    transform: rotate(-90deg) translateY(0%);
+    top: -10px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
 
 .folderGroup__48112[data-drop-hovering=true]:not(.isExpanded__48112) .folderHeader__48112 {
     border-radius: var(--Rounding);
@@ -154,6 +148,7 @@
 #app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ebc727,
 #app-mount .guilds__5e434 .listItem__650eb .wrapper__58105,
 #app-mount .pill__1f388 {
+    transform: rotate(90deg) translateY(0%);
     height: var(--ServerSize);
     width: 10px;
     top: calc(var(--ServerSize) / -1 + var(--ServerSize) / 2 - 5px) !important;
@@ -251,8 +246,8 @@
 }
 
 .unreadMentionsBar_ef3116 {
-    left: auto;
-    right: calc(-50% + 0px); /* Zmieniono na right */
+    transform: rotate(90deg) translateY(0%) !important;
+    left: calc(-50% + 0px);
     bottom: unset;
     width: var(--ServerSize);
     height: 16px;
@@ -271,8 +266,7 @@
 .unreadMentionsIndicatorTop_ef3116,
 .unreadMentionsIndicatorBottom_ef3116 {
     top: 0px;
-    right: 4px !important; /* Zmieniono na right */
-    left: auto !important;
+    left: 4px;
     padding: 0;
     height: var(--ServerSize);
     width: var(--ServerSize);
@@ -329,7 +323,6 @@
 }
 
 #app-mount .app_a3002d .base__5e434 .content__5e434>.sidebar__5e434.hidden__5e434+.page__5e434 {
-    margin-top: 0 !important;
-    margin-right: calc((var(--ServerSize) + 20px) * -1) !important; /* Zmieniono na margin-right */
+    margin-top: calc((var(--ServerSize) + 20px) * -1) !important;
     height: calc(100% + var(--ServerSize) + 20px) !important;
 }

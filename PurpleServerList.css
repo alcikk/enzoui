@@ -17,7 +17,6 @@
 /* 2. Główny kontener - PRZENIESIENIE NA PRAWĄ STRONĘ */
 #app-mount .guilds__5e434 {
     transform-origin: top right; /* Zmieniono punkt obrotu na prawą górną krawędź */
-    transform: rotate(270deg) !important; /* Zmieniono obrót na 270deg (lub -90deg) */
     
     /* Pozycja po prawej */
     top: auto !important;
@@ -41,7 +40,6 @@
 
 /* 3. Elementy listy (ikony serwerów) */
 #app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper]) {
-    transform: rotate(270deg) !important; /* Ikony proste po obrocie kontenera */
     position: unset;
     width: var(--ServerSize);
     height: var(--ServerSize);
@@ -88,7 +86,6 @@
 }
 
 #app-mount [class*="guildSeparator"] {
-    transform: rotate(270deg) !important;
     width: var(--ServerSize);
 }
 
@@ -157,7 +154,6 @@
 #app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ebc727,
 #app-mount .guilds__5e434 .listItem__650eb .wrapper__58105,
 #app-mount .pill__1f388 {
-    transform: rotate(270deg) translateY(0%) !important;
     height: var(--ServerSize);
     width: 10px;
     top: calc(var(--ServerSize) / -1 + var(--ServerSize) / 2 - 5px) !important;
@@ -255,7 +251,6 @@
 }
 
 .unreadMentionsBar_ef3116 {
-    transform: rotate(270deg) translateY(0%) !important;
     left: auto;
     right: calc(-50% + 0px); /* Zmieniono na right */
     bottom: unset;

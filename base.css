@@ -54,7 +54,7 @@
     --ui-warning: rgb(238, 165, 30);
     --ui-error: rgb(208, 34, 34);
     /* SERVER SETTINGS */
-    --ServerSize: 45px;
+    --ServerSize: 10px;
     --ServerPills: var(--Primary);
     --ServerFoldersColor: var(--Primary);
     /* ROUNDING */

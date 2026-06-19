@@ -93,7 +93,7 @@
 }
 
 #app-mount .wrapper_d144f8 {
-    transform: rotate(180deg) translateY(0%) !important; /* Dostosowanie rotacji do prawej strony */
+    transform: rotate(270deg) translateY(0%) !important; /* Dostosowanie rotacji do prawej strony */
     top: -10px;
     bottom: 0px;
     left: 0px;

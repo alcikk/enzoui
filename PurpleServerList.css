@@ -1,66 +1,64 @@
 /* 
-   PurpleServerList.css - POPRAWIONA WERSJA (Na Dół)
-   Lista serwerów jest teraz poziomo na dole ekranu.
+   PurpleServerList.css - WERSJA NA PRAWĄ STRONĘ
+   Lista serwerów jest teraz pionowo po prawej stronie ekranu.
 */
 
 .platform-osx .wrapper_ef3116 {
     margin-top: 0px;
 }
 
-/* 1. Zmiana paddingu, aby treść nie zasłaniała paska na dole */
+/* 1. Zmiana paddingu treści, aby nie zasłaniała listy po prawej */
 #app-mount .app_a3002d .base__5e434 .content__5e434 {
+    padding-right: calc(var(--ServerSize) + 20px) !important; /* Zmieniono padding-right */
     padding-top: 0 !important;
-    padding-bottom: calc(var(--ServerSize) + 40px) !important; /* Zwiększono padding na dole */
     position: relative;
 }
 
-/* 2. Główny kontener serwerów - PRZENIESIENIE NA DÓŁ */
+/* 2. Główny kontener - PRZENIESIENIE NA PRAWĄ STRONĘ */
 #app-mount .guilds__5e434 {
-    transform-origin: bottom left;
-    transform: rotate(0deg) !important; /* USUNIĘTO ROTACJĘ 180 STOPNI */
+    transform-origin: top right; /* Zmieniono punkt obrotu na prawą górną krawędź */
+    transform: rotate(270deg) !important; /* Zmieniono obrót na 270deg (lub -90deg) */
     
-    /* Pozycja na dole */
+    /* Pozycja po prawej */
     top: auto !important;
-    bottom: 0 !important; /* Kluczowe: przyklej do dołu */
-    left: 0;
+    bottom: auto !important;
+    right: 0 !important; /* Kluczowe: przyklej do prawej */
+    left: auto !important;
     
-    /* Wymiary paska na dole */
-    width: 100vw !important; /* Pełna szerokość */
-    height: calc(var(--ServerSize) + 30px) !important; /* Wysokość paska */
+    /* Wymiary pionowego paska po prawej */
+    height: calc(var(--ServerSize) + 20px) !important; /* Szerokość paska (wysokość w CSS) */
+    width: 100vh !important; /* Wysokość paska (szerokość w CSS) - pełna wysokość ekranu */
     
     position: fixed !important;
-    flex-wrap: nowrap; /* Nie zawijaj w nową linię */
+    flex-wrap: wrap;
     place-content: center;
-    z-index: 9999 !important; /* Upewnij się, że jest na wierzchu */
+    z-index: 9999 !important;
 }
 
 .scrollerWrap-1IAIlv {
-    width: 100%; /* Zmieniono z +30px na 100% dla pełnej szerokości */
-    max-width: 100% !important;
+    width: calc(100% - 30px); /* Zmieniono szerokość, aby nie wychodziło poza ekran */
 }
 
 /* 3. Elementy listy (ikony serwerów) */
 #app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper]) {
-    transform: rotate(0deg) !important; /* Ikony są proste */
-    position: relative !important;
+    transform: rotate(270deg) !important; /* Ikony proste po obrocie kontenera */
+    position: unset;
     width: var(--ServerSize);
     height: var(--ServerSize);
     overflow: visible;
-    margin: 0 4px !important; /* Odstęp między serwerami */
 }
 
 #app-mount .guilds__5e434 .listItem__650eb {
-    width: auto;
+    width: unset;
     margin: 0;
 }
 
-/* Kontener tutorialny (przycisk dodawania) */
 #app-mount .guilds__5e434 .tutorialContainer__650eb,
 #app-mount .guilds__5e434 .tutorialContainer__650eb+.listItem__650eb {
     width: auto;
     place-content: center;
-    flex-wrap: nowrap;
-    margin: 0 4px;
+    flex-wrap: wrap;
+    margin: 3px 0 6px 0;
 }
 
 #app-mount .guilds__5e434 .folderGroup__48112>.listItem__650eb {
@@ -73,35 +71,33 @@
 
 #app-mount .folderGroup__48112 {
     display: flex;
-    flex-wrap: nowrap; /* Zmieniono na nowrap dla poziomego układu */
+    flex-wrap: wrap;
     justify-content: center;
-    width: auto;
+    width: 100%;
     overflow: visible;
 }
 
 #app-mount .folderGroup__48112:not(.isExpanded__48112) {
     height: var(--ServerSize);
-    width: auto;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116 .stack_dbd263:not([id]) {
-    width: auto;
+    width: calc(100% - 0px);
     flex: 1 1 auto;
     justify-content: center;
 }
 
 #app-mount [class*="guildSeparator"] {
-    transform: rotate(0deg) !important;
+    transform: rotate(270deg) !important;
     width: var(--ServerSize);
-    display: none; /* Często niepotrzebny separator w poziomie */
 }
 
 #app-mount .wrapper_d144f8 {
-    transform: rotate(0deg) !important;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    transform: rotate(180deg) translateY(0%) !important; /* Dostosowanie rotacji do prawej strony */
+    top: -10px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
 
 .folderGroup__48112[data-drop-hovering=true]:not(.isExpanded__48112) .folderHeader__48112 {
@@ -154,36 +150,31 @@
     left: auto;
 }
 
-/* 4. Scroller - układowanie poziome */
 #app-mount .guilds__5e434 .scroller_ef3116 {
-    width: 100% !important;
+    width: calc(var(--ServerSize) + 20px);
     height: 100% !important;
-    display: flex !important;
-    flex-direction: row !important; /* Układ poziomy */
-    padding: 0 20px !important; /* Odstęp od krawędzi */
-    flex-wrap: nowrap !important;
-    justify-content: flex-start !important; /* Start od lewej */
-    align-items: center !important;
-    overflow-x: auto !important; /* Przewijanie poziome jeśli za dużo serwerów */
-    overflow-y: hidden !important;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 !important;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ebc727,
 #app-mount .guilds__5e434 .listItem__650eb .wrapper__58105,
 #app-mount .pill__1f388 {
-    transform: rotate(0deg) !important;
+    transform: rotate(270deg) translateY(0%) !important;
     height: var(--ServerSize);
     width: 10px;
-    top: 50% !important; /* Środek pionowy */
-    left: 50% !important;
+    top: calc(var(--ServerSize) / -1 + var(--ServerSize) / 2 - 5px) !important;
+    left: calc(50% - 5px);
     display: flex;
     justify-content: center;
-    margin-top: -5px;
 }
 
 #app-mount .guilds__5e434 div.stack_dbd263>.folderGroup__48112 .listItem__650eb .wrapper__58105 {
-    top: 50% !important;
-    margin-top: -5px;
+    top: calc(var(--ServerSize) / -1 + var(--ServerSize) / 2 - 5px) !important;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div#guild-list-unread-dms .listItem__650eb>.pill_ebc727>span,
@@ -212,10 +203,9 @@
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div[style*="opacity: 1;"]:not(:first-child)>.listItem__650eb {
-    position: relative !important;
+    position: initial;
     width: var(--ServerSize);
     height: var(--ServerSize);
-    margin: 0 4px;
 }
 
 #app-mount .activityCount_fa285e>.pill_dc6abe.pillOnline_dc6abe+.pill_dc6abe {
@@ -227,31 +217,31 @@
 #app-mount .guilds__5e434 [class*=listItem]:not([class*=listItemWrapper])>.wrapper_6e9f8d {
     width: var(--ServerSize);
     height: var(--ServerSize);
-    top: 0;
-    bottom: 0;
+    top: 0px;
+    bottom: 0px;
 }
 
 #app-mount .guilds__5e434 .folderGroup__48112 ul>[class*=listItem]:not([class*=listItemWrapper]) {
-    margin: 0 4px;
+    margin: -5px 0px -5px 10px;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116 .stack_dbd263:not([id])>.listItem__650eb {
-    margin: 0 4px;
+    margin: 0px 0px 0px 10px;
 }
 
 #guild-list-unread-dms>div:not([class])[style*="height: 40px;"] {
-    margin: 0 4px;
+    margin: 0px 0px 0px 10px;
     height: var(--ServerSize) !important;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div[style*="opacity: 1;"]:not(:first-child) {
-    margin: 0;
+    margin: 3px 0 3px 0;
 }
 
 #app-mount .guilds__5e434 .scroller_ef3116>div:not([class]):not([style]) {
     place-content: center;
     flex: 1 1 auto;
-    margin: 0 4px;
+    margin: 6px 0px;
     border-radius: var(--Rounding);
 }
 
@@ -272,50 +262,48 @@
 }
 
 .unreadMentionsBar_ef3116 {
-    transform: rotate(0deg) !important;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
+    transform: rotate(270deg) translateY(0%) !important;
+    left: auto;
+    right: calc(-50% + 0px); /* Zmieniono na right */
+    bottom: unset;
+    width: var(--ServerSize);
+    height: 16px;
     padding: 0;
     opacity: 1;
-    top: auto;
 }
 
 .unreadMentionsIndicatorTop_ef3116 .unreadMentionsBar_ef3116 {
-    top: auto;
-    bottom: 0;
+    top: 16px;
 }
 
 .unreadMentionsIndicatorBottom_ef3116 .unreadMentionsBar_ef3116 {
-    top: auto;
-    bottom: 0;
+    top: -6px;
 }
 
 .unreadMentionsIndicatorTop_ef3116,
 .unreadMentionsIndicatorBottom_ef3116 {
-    top: auto;
-    bottom: 0;
-    left: 0;
+    top: 0px;
+    right: 4px !important; /* Zmieniono na right */
+    left: auto !important;
     padding: 0;
-    height: 4px;
-    width: 100%;
+    height: var(--ServerSize);
+    width: var(--ServerSize);
     overflow: visible;
-    margin: 0;
+    margin: 6px 4px 6px 4px;
 }
 
 .unreadMentionsIndicatorBottom_ef3116 {
-    top: auto;
-    bottom: 0;
+    top: unset;
+    bottom: 0px;
 }
 
 .unreadMentionsIndicatorBottom_ef3116>.unreadMentionsBar_ef3116:not(.hidden_3b95d7)::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     right: -4px;
     width: 8px;
-    height: 4px;
+    height: 16px;
     background-color: var(--Unread);
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
 }
@@ -323,10 +311,10 @@
 .unreadMentionsIndicatorTop_ef3116>.unreadMentionsBar_ef3116:not(.hidden_3b95d7)::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     left: -6px;
     width: 8px;
-    height: 4px;
+    height: 16px;
     background-color: var(--Unread);
     clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
 }
@@ -342,7 +330,7 @@
 }
 
 .folderGroup__48112.isExpanded__48112 .folderPreviewWrapper__48112 {
-    margin-top: 0;
+    margin-top: 6px;
 }
 
 .wrapper_cc5dd2 > svg > foreignObject > div:not([class]) {
@@ -354,7 +342,6 @@
 
 #app-mount .app_a3002d .base__5e434 .content__5e434>.sidebar__5e434.hidden__5e434+.page__5e434 {
     margin-top: 0 !important;
-    margin-bottom: calc(var(--ServerSize) + 40px) !important; /* Zmieniono na margin-bottom */
-    height: auto !important;
-    padding-bottom: calc(var(--ServerSize) + 40px) !important;
+    margin-right: calc((var(--ServerSize) + 20px) * -1) !important; /* Zmieniono na margin-right */
+    height: calc(100% + var(--ServerSize) + 20px) !important;
 }
